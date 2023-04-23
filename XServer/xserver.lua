@@ -10,21 +10,13 @@ if not gpu or not component.screen then
   os.exit()
 end
 
-local w, h = gpu.maxResolution()
-
-gpu.fill(1,1,w,h," ")
-
-local y = 1
-local function print(...)
-  if y >= h then
-    gpu.copy(1,1,w,h,1,0)
-    y = h - 1
-  end
-  gpu.set(1, y, ...)
-  y = y + 1
-end
-
 print("Initialising X2 server")
+
+function table.slice(tbl, first, last, step)
+  local sliced = {}
+  for i = first or 1, last or #tbl, step or 1 do sliced[#sliced+1] = tbl[i] end
+  return sliced
+end
 
 local path = "/usr/x2/config.json"
 
@@ -50,7 +42,6 @@ if not fs.exists(de_path.."/main.lua") then
   os.exit()
 end
 
---gpu.setResolution()
 local de_main, reason = loadfile(de_path.."/main.lua")
 if reason then
   print(reason)
@@ -64,30 +55,29 @@ fakeGPU.flip(true)
 local de_table = de_main(fakeGPU, computer, fs, de_path, RESOLUTION)
 while true do
   local act = nil
+  local ev = nil
   if de_table.buffered then
-    local event, a1, a2, a3, a4, a5, a6 = event.pull()
-    if not de_table.loop(event) then
-      de_table.draw()
-    end
-    act = de_table.handle(event, a1, a2, a3, a4, a5, a6)
+    ev = table.pack(event.pull())
   else
-    local event, a1, a2, a3, a4, a5, a6 = event.pull(0.1)
-    if not de_table.loop(event) then
-      de_table.draw()
-    end
-    if event ~= nil then
-      act = de_table.handle(event, a1, a2, a3, a4, a5, a6)
-    end
+    ev = table.pack(event.pull(0.02))
   end
+
+  local ev, args = ev[1], table.slice(ev, 2, #ev, 1)
+  if not de_table.loop(ev) then
+    de_table.draw()
+  end
+  act = de_table.handle(ev, table.unpack(args))
+
   fakeGPU.flip(false)
   if act == "exit" then de_table.exit() break end
   if act == "next" then
-    local event, a1, a2, a3, a4, a5, a6 = event.pull(0.1)
+    local event = table.pack(event.pull(0.02))
+    local event, args = event[1], table.slice(event, 2, #event, 1)
     if not de_table.loop(event) then
       de_table.draw()
     end
     if event ~= nil then
-      act = de_table.handle(event, a1, a2, a3, a4, a5, a6)
+      act = de_table.handle(event, table.unpack(args))
     end
   end
   if act == "draw" then
