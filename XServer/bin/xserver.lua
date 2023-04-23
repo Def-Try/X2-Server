@@ -1,6 +1,6 @@
 local component = require("component")
 local os = require("os")
-local json = require("json")
+local json = require("/usr/x2/lib/json.lua")
 local fs = require("filesystem")
 local event = require("event")
 local gpu = component.gpu
@@ -56,7 +56,7 @@ if reason then
   print(reason)
 end
 
-local fakeGPU = require("XServer-GPU")
+local fakeGPU = require("/usr/x2/lib/XServer-GPU.lua")
 
 fakeGPU.bind(component.screen.address)
 fakeGPU.direct.clear()
