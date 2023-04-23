@@ -56,7 +56,7 @@ if reason then
   print(reason)
 end
 
-local fakeGPU = require("/usr/x2/lib/XServer-GPU.lua")
+local fakeGPU = require("XServer-GPU")
 
 fakeGPU.bind(component.screen.address)
 fakeGPU.direct.clear()
