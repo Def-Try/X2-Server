@@ -20,11 +20,11 @@ also, if url starts with "!", it will be interpreted as standalone url.
 ]]
 local files = {
 	{"/XServer/xserver.lua", "/bin/xserver.lua"},
-	{"/XServer/lib/screen.lua", "/lib/Screen.lua"},
-	{"!https://raw.githubusercontent.com/IgorTimofeev/Color/master/Color.lua", "/lib/Color.lua"},
-	{"/XServer/lib/image.lua", "/lib/Image.lua"},
-	{"!https://raw.githubusercontent.com/IgorTimofeev/Image/master/OCIF.lua", "/lib/OCIF.lua"},
-	{"!https://raw.githubusercontent.com/IgorTimofeev/AdvancedLua/master/AdvancedLua.lua", "/lib/AdvancedLua.lua"},
+	{"/XServer/lib/screen.lua", "/lib/screen.lua"},
+	{"!https://raw.githubusercontent.com/IgorTimofeev/Color/master/Color.lua", "/lib/color.lua"},
+	{"/XServer/lib/image.lua", "/lib/image.lua"},
+	{"!https://raw.githubusercontent.com/IgorTimofeev/Image/master/OCIF.lua", "/lib/ocif.lua"},
+	{"!https://raw.githubusercontent.com/IgorTimofeev/AdvancedLua/master/AdvancedLua.lua", "/lib/advancedLua.lua"},
 	{"/XServer/lib/json.lua", "/lib/json.lua", ""},
 	{"/XServer/lib/XServer-GPU.lua", "/lib/XServer-GPU.lua"},
 	{"/XServer/config.json", "/x2/config.json"}
