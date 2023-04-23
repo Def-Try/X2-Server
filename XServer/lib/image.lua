@@ -1,6 +1,6 @@
 
 local computer = require("computer")
-local color = require("color")
+local color = require("/usr/x2/lib/color.lua")
 local unicode = require("unicode")
 local fs = require("filesystem")
 local gpu = require("component").gpu
