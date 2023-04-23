@@ -1,5 +1,5 @@
 local rgpu = require("component").gpu
-local screen = require("Screen")
+local screen = require("/usr/x2/lib/screen.lua")
 
 local BG, FG = 0x000000, 0xFFFFFF
 
