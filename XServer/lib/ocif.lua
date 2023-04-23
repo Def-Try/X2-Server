@@ -3,10 +3,10 @@ local args = {...}
 local image = args[1]
 
 local bit32 = require("bit32")
-require("advancedLua")
+require("/usr/x2/lib/advancedlua.lua")
 local unicode = require("unicode")
 local fs = require("filesystem")
-local color = require("color")
+local color = require("/usr/x2/lib/color.lua")
 
 --------------------------------------------------------------------------------
 
