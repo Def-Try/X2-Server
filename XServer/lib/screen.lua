@@ -1,6 +1,6 @@
 local component = require("component")
-local color = require("/usr/x2/lib/color.lua")
-local image = require("/usr/x2/lib/image.lua")
+local color = require("color")
+local image = require("image")
 local unicode = require("unicode")
 
 --------------------------------------------------------------------------------
