@@ -1,6 +1,6 @@
 local component = require("component")
 local os = require("os")
-local json = require("/usr/x2/lib/json.lua")
+local json = require("json")
 local fs = require("filesystem")
 local event = require("event")
 local gpu = component.gpu
